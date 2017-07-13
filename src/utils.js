@@ -5,7 +5,7 @@
 		// @params(split:String),split为分隔符,默认'-'
 		// @return(yyyy-mm-dd)
 		getDateYMD : function(split){
-			split = split == undefined ? '-' : split;
+			split = split || '-';
 			var myDate = new Date();
 			var m = myDate.getMonth() < 9 ? '0' + (myDate.getMonth() + 1) : myDate.getMonth() + 1;
 			var d = myDate.getDate() < 9 ? '0' + (myDate.getDate()) : myDate.getDate();
@@ -16,7 +16,7 @@
 		// @params(split:String),split为分隔符,默认':'
 		// @return(hh:mm:ss)
 		getDateHMS : function(split){
-			split = split == undefined ? ':' : split;
+			split = split || ':';
 			var date = new Date();
 			var hour = date.getHours();
 			var min = date.getMinutes();
@@ -72,10 +72,10 @@
 		objToArrSimple : function(obj){
 			var result = []
 			for (var i in obj) {
-				var temp = {}
-				temp["value"] = i
-				temp["name"] = obj[i]
-				result.push(temp)
+				result.push({
+					value:i,
+					name:obj[i]
+				})
 			};
 			return result
 		}
